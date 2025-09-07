@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Contraseña</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container-recuperar {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .form-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-recuperar">
+  <h2 class="form-title">Recuperar Contraseña</h2>
+  <form action="recuperar.php" method="POST" id="recuperarForm">
+    <input type="text" name="dni" class="form-control mb-2" placeholder="DNI registrado" required pattern="\d{8}" maxlength="8">
+    <input type="password" name="nueva_clave" class="form-control mb-2" placeholder="Nueva Contraseña" required>
+    <input type="password" name="confirmar_clave" class="form-control mb-3" placeholder="Confirmar Contraseña" required>
+    <button type="submit" class="btn btn-success w-100">Actualizar Contraseña</button>
+    <div class="text-center mt-3">
+      <a href="index.html">← Volver al inicio</a>
+    </div>
+  </form>
+</div>
+
+<script>
+document.getElementById("recuperarForm").addEventListener("submit", function(e) {
+  const pass = document.querySelector('[name="nueva_clave"]').value;
+  const confirm = document.querySelector('[name="confirmar_clave"]').value;
+  if (pass !== confirm) {
+    alert("❌ Las contraseñas no coinciden.");
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>
